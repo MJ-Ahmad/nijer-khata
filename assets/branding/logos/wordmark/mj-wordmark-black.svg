@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <title>mj-wordmark-black</title>
+  <rect width="400" height="120" fill="white"/>
+  <!-- MJ Monogram -->
+  <text x="40" y="70" font-family="Georgia, serif" font-size="48" fill="black" font-weight="bold">MJ</text>
+  <!-- Wordmark -->
+  <text x="40" y="105" font-family="Arial, sans-serif" font-size="28" fill="black" letter-spacing="4">AHMAD</text>
+</svg>

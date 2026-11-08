@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#000000"/>
+  <text x="120" y="720"
+        font-family="Georgia,serif"
+        font-size="700"
+        font-weight="700"
+        fill="#ffffff">
+    MJ
+  </text>
+  <text x="300" y="980"
+        font-family="Georgia,serif"
+        font-size="110"
+        letter-spacing="16"
+        fill="#ffffff">
+    AHMAD
+  </text>
+</svg>

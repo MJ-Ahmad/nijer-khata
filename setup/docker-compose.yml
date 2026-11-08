@@ -1,0 +1,18 @@
+services:
+  khata-terminal:
+    build:
+      context: ..
+      dockerfile: setup/Dockerfile
+    image: nijer-khata-terminal:1.1
+    environment:
+      TTYD_USER: ${TTYD_USER:-khata}
+      TTYD_PASS: ${TTYD_PASS:?Set TTYD_PASS in setup/.env first}
+      KHATA_BIND: 0.0.0.0
+    ports:
+      # Only this computer can reach them. Do not change 127.0.0.1 to a public address.
+      - "127.0.0.1:7681:7681"   # bash terminal in the browser
+      - "127.0.0.1:8000:8000"   # dashboard, after ./khata start inside the terminal
+    volumes:
+      # Project files live on your computer, so data.json survives container rebuilds.
+      - ..:/root/nijer-khata
+    restart: unless-stopped

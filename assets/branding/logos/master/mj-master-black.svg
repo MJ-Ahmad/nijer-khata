@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#ffffff"/>
+
+  <!-- MJ Monogram -->
+  <g fill="#000000">
+
+    <!-- M -->
+    <path d="
+      M100 900
+      V180
+      H160
+      L390 500
+      L620 180
+      H680
+      V640
+      H600
+      V300
+      L390 590
+      L180 300
+      V900
+      Z"/>
+
+    <!-- J -->
+    <path d="
+      M760 180
+      H1030
+      C1085 180 1120 215 1120 270
+      V720
+      C1120 850 1030 950 900 950
+      H820
+      V880
+      H890
+      C980 880 1040 820 1040 730
+      V270
+      H760
+      Z"/>
+
+    <!-- Signature Loop -->
+    <circle
+      cx="980"
+      cy="250"
+      r="70"
+      fill="none"
+      stroke="#000000"
+      stroke-width="22"/>
+
+    <circle
+      cx="980"
+      cy="250"
+      r="18"/>
+  </g>
+
+  <!-- Brand Name -->
+  <text
+    x="600"
+    y="1080"
+    text-anchor="middle"
+    font-family="Georgia, serif"
+    font-size="110"
+    letter-spacing="14"
+    fill="#000000">
+    AHMAD
+  </text>
+
+</svg>

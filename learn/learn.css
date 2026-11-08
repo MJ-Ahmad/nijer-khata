@@ -1,0 +1,54 @@
+:root{--bg:#eef3f1;--surface:#f8fbfa;--line:#d3dfd8;--ink:#14303a;--muted:#5b7270;--moss:#2e6b55;--amber:#c7851c;--violet:#5f4a8b;--body:#233c44;color-scheme:light}
+html[data-theme="dark"]{--bg:#0d1b1f;--surface:#132529;--line:#24393e;--ink:#e6f0ec;--muted:#93aaa4;--moss:#6fb896;--amber:#e0a445;--violet:#b3a1e0;--body:#c9dcd5;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Hind Siliguri",system-ui,sans-serif;padding-top:env(safe-area-inset-top,0)}
+a{color:var(--moss)}
+.wrap{max-width:900px;margin:0 auto;padding:22px 18px 48px}
+.mono,pre.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:13px}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand img{width:44px;height:44px;border-radius:50%;object-fit:contain;background:transparent;filter:var(--logo-filter,none);mix-blend-mode:multiply}
+html[data-theme="dark"] .brand img{--logo-filter:invert(1);mix-blend-mode:screen}
+.brand-name{font-family:"Galada","Tiro Bangla",serif;font-size:26px;line-height:1.2}
+.tools{display:flex;align-items:center;gap:14px}
+.lang{display:flex;gap:14px}
+.lang button{background:none;border:0;border-bottom:2px solid transparent;padding:4px 0;color:var(--muted);cursor:pointer;font:inherit;font-size:14px}
+.lang button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--amber)}
+.theme-btn{background:none;border:1px solid var(--line);border-radius:50%;width:34px;height:34px;color:var(--ink);cursor:pointer;font-size:16px;padding:0}
+.crumbs{margin:18px 0 0;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px}
+.crumbs a{color:var(--moss);text-decoration:none}
+.hero{padding:26px 0 10px}
+.kicker{margin:0;color:var(--violet);font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.hero h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:44px;line-height:1.1;margin:6px 0 8px}
+.lead{margin:0;color:var(--body);max-width:44rem}
+.count{color:var(--muted);font-size:14px;margin:12px 0 0}
+.status{display:inline-block;font-size:13px;padding:2px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-bottom:6px}
+.status.s-active{color:var(--moss);border-color:var(--moss)}
+.status.s-done{color:var(--violet);border-color:var(--violet)}
+.group{margin-top:30px}
+.group h2{font-family:"Tiro Bangla",serif;font-weight:400;font-size:20px;margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.card{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--moss);transform:translateY(-2px)}
+.card-name{font-weight:600;font-size:18px}
+.card-sum{color:var(--body);font-size:14.5px;line-height:1.55}
+.card-meta{margin-top:auto;padding-top:8px;color:var(--muted);font-size:13px}
+.phases{list-style:none;margin:22px 0 0;padding:0;counter-reset:none}
+.phase{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.phase-no{flex:0 0 44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;color:var(--violet)}
+.phase h2{font-family:"Tiro Bangla",serif;font-weight:400;font-size:20px;margin:2px 0 6px}
+.phase ul{margin:0;padding-left:1.2em;color:var(--body)}
+.phase li{margin:2px 0}
+.log-box{margin-top:26px;padding:18px;border:1px dashed var(--line);border-radius:12px;background:var(--surface)}
+.log-box h2{font-family:"Tiro Bangla",serif;font-weight:400;font-size:19px;margin:0 0 6px}
+.log-box p{margin:0 0 10px;color:var(--body)}
+pre{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;white-space:pre;color:var(--ink);margin:0}
+.pn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pn{display:flex;flex-direction:column;padding:12px 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);background:var(--surface)}
+.pn small{color:var(--muted);font-size:12.5px}
+.pn-next{text-align:right}
+html[dir="rtl"] .pn-next{text-align:left}
+.site-foot{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px}
+.site-foot a{text-decoration:none}
+@media (max-width:640px){.hero h1{font-size:34px}.brand-name{font-size:22px}.pn-row{grid-template-columns:1fr}}

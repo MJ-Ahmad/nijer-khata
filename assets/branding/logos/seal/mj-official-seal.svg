@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <title>mj-official-seal</title>
+  <!-- Outer Circle -->
+  <circle cx="150" cy="150" r="140" fill="black" stroke="gold" stroke-width="8"/>
+  
+  <!-- Inner Circle -->
+  <circle cx="150" cy="150" r="110" fill="black" stroke="white" stroke-width="3"/>
+  
+  <!-- MJ Monogram -->
+  <text x="150" y="140" text-anchor="middle" dominant-baseline="middle"
+        font-family="Georgia, serif" font-size="72" fill="white" font-weight="bold">MJ</text>
+  
+  <!-- Wordmark -->
+  <text x="150" y="200" text-anchor="middle"
+        font-family="Arial, sans-serif" font-size="28" fill="gold" letter-spacing="6">AHMAD</text>
+  
+  <!-- Decorative Stars -->
+  <text x="80" y="80" font-size="20" fill="gold">★</text>
+  <text x="220" y="80" font-size="20" fill="gold">★</text>
+  <text x="80" y="220" font-size="20" fill="gold">★</text>
+  <text x="220" y="220" font-size="20" fill="gold">★</text>
+</svg>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FFmpeg · Learn · Nijer Khata</title>
+<meta name="description" content="Command-line audio and video processing: transcoding, filters, streaming and automation.">
+<meta name="theme-color" content="#0d1b1f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nijer Khata · নিজের খাতা">
+<meta property="og:title" content="FFmpeg · Learn · Nijer Khata">
+<meta property="og:description" content="Command-line audio and video processing: transcoding, filters, streaming and automation.">
+<meta property="og:url" content="https://mj-ahmad.github.io/mj/nijer-khata/learn/ffmpeg/">
+<meta property="og:image" content="https://mj-ahmad.github.io/mj/nijer-khata/assets/branding/og/og-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FFmpeg · Learn · Nijer Khata">
+<meta name="twitter:description" content="Command-line audio and video processing: transcoding, filters, streaming and automation.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/branding/logos/favicon/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/branding/logos/app-icons/ios-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Galada&family=Cormorant+Garamond:wght@500;600&family=Tiro+Bangla&family=Hind+Siliguri:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../learn/learn.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="../../">
+    <img src="../../assets/logo.png" alt="" width="44" height="44" onerror="this.remove()">
+    <span class="brand-name" data-en="Nijer Khata" data-bn="নিজের খাতা" data-ar="نيجِر خاتا">Nijer Khata</span>
+  </a>
+  <div class="tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="bn" aria-pressed="false">বাংলা</button>
+      <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
+    </div>
+    <button type="button" id="theme" class="theme-btn" aria-label="Theme"></button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="breadcrumb">
+  <a href="../../" data-en="Home" data-bn="হোম" data-ar="الرئيسية">Home</a> <span>/</span>
+  <a href="../" data-en="Learn" data-bn="শেখার কেন্দ্র" data-ar="مركز التعلم">Learn</a> <span>/</span>
+  <span data-en="FFmpeg" data-bn="এফএফএমপেগ" data-ar="FFmpeg">FFmpeg</span>
+</nav>
+<section class="hero">
+  <span class="status s-planned" data-en="Planned" data-bn="পরিকল্পিত" data-ar="مخطط">Planned</span>
+  <h1 data-en="FFmpeg" data-bn="এফএফএমপেগ" data-ar="FFmpeg">FFmpeg</h1>
+  <p class="lead" data-en="Command-line audio and video processing: transcoding, filters, streaming and automation." data-bn="কমান্ড-লাইনে অডিও-ভিডিও প্রসেসিং: ট্রান্সকোড, ফিল্টার, স্ট্রিমিং ও অটোমেশন।">Command-line audio and video processing: transcoding, filters, streaming and automation.</p>
+</section>
+<ol class="phases">
+<li class="phase"><span class="phase-no mono">01</span>
+  <div><h2 data-en="Basics" data-bn="মৌলিক">Basics</h2><ul><li>Containers and codecs</li><li>Transcoding and remuxing</li><li>Stream selection</li></ul></div></li>
+<li class="phase"><span class="phase-no mono">02</span>
+  <div><h2 data-en="Filters" data-bn="ফিল্টার">Filters</h2><ul><li>Scale, crop and overlay</li><li>Audio filters</li><li>Filter graphs</li></ul></div></li>
+<li class="phase"><span class="phase-no mono">03</span>
+  <div><h2 data-en="Automation" data-bn="অটোমেশন">Automation</h2><ul><li>Batch scripts</li><li>Segmenting for HLS</li><li>Quality metrics</li></ul></div></li>
+</ol>
+<section class="log-box">
+  <h2 data-en="Log your progress" data-bn="আপনার অগ্রগতি লিখুন" data-ar="سجّل تقدمك">Log your progress</h2>
+  <p data-en="From the shell in the project folder, record what you studied. The entry is saved with Dhaka and UTC time." data-bn="প্রজেক্ট ফোল্ডারের শেল থেকে যা পড়লেন তা লিখুন। এন্ট্রিতে ঢাকা ও ইউটিসি সময় যুক্ত হবে।" data-ar="من الطرفية داخل مجلد المشروع، سجّل ما درسته. يُحفظ الإدخال مع توقيت دكا والتوقيت العالمي.">From the shell in the project folder, record what you studied. The entry is saved with Dhaka and UTC time.</p>
+  <pre class="mono">./khata log "FFmpeg: today's progress" --category learning --tag ffmpeg</pre>
+</section>
+<nav class="pn-row" aria-label="subjects"><a href="../math/" class="pn"><small data-en="Previous" data-bn="আগের বিষয়" data-ar="السابق">Previous</small><span data-en="Mathematics" data-bn="গণিত" data-ar="الرياضيات">Mathematics</span></a><a href="../mycommand/" class="pn pn-next"><small data-en="Next" data-bn="পরের বিষয়" data-ar="التالي">Next</small><span data-en="MyCommand" data-bn="মাইকমান্ড" data-ar="MyCommand">MyCommand</span></a></nav>
+
+<footer class="site-foot">
+  <span data-en="Track every step. Keep it inheritable." data-bn="প্রতিটি ধাপ লিখে রাখুন। উত্তরাধিকারযোগ্য রাখুন।" data-ar="تتبّع كل خطوة. واجعلها قابلة للتوارث.">Track every step. Keep it inheritable.</span>
+  <a href="../../../"><span data-en="Main site" data-bn="মূল সাইট" data-ar="الموقع الرئيسي">Main site</span> · <span data-en="MJ Ahmad" data-bn="এম জে আহমদ" data-ar="إم جي أحمد">MJ Ahmad</span> ←</a>
+</footer>
+</div>
+<script src="../../learn/learn.js"></script>
+</body>
+</html>

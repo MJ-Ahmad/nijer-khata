@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+# khata — command shell for Nijer Khata (নিজের খাতা)
+#   ./khata help            list every command
+#   ./khata start           validate the database, then serve the dashboard
+set -euo pipefail
+
+VERSION="1.1.0"
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$HERE"
+PY="${PYTHON:-python3}"
+PORT="${PORT:-8000}"
+
+if [[ -t 1 ]]; then
+  BOLD=$'\033[1m'; DIM=$'\033[2m'; GRN=$'\033[32m'; RED=$'\033[31m'; YLW=$'\033[33m'; RST=$'\033[0m'
+else
+  BOLD=""; DIM=""; GRN=""; RED=""; YLW=""; RST=""
+fi
+
+say()  { printf '%s\n' "$*"; }
+ok()   { printf '%s✔%s %s\n' "$GRN" "$RST" "$*"; }
+warn() { printf '%s!%s %s\n' "$YLW" "$RST" "$*"; }
+die()  { printf '%s✘%s %s\n' "$RED" "$RST" "$*" >&2; exit 1; }
+head_() { printf '\n%s%s%s\n' "$BOLD" "$*" "$RST"; }
+
+need_py() {
+  command -v "$PY" >/dev/null 2>&1 || die "'$PY' not found. Install Python 3 or set PYTHON=/path/to/python3."
+}
+
+open_url() {
+  if command -v xdg-open >/dev/null 2>&1; then xdg-open "$1" >/dev/null 2>&1 &
+  elif command -v open >/dev/null 2>&1; then open "$1"
+  else say "$1"; fi
+}
+
+usage() {
+  cat <<USAGE
+${BOLD}khata${RST} ${DIM}v${VERSION} · Nijer Khata command shell${RST}
+
+${BOLD}Serve${RST}
+  khata start [PORT]            validate, then serve the dashboard (default $PORT)
+  khata open                    open the dashboard in your browser
+
+${BOLD}Entries${RST}
+  khata log "TEXT" [--category C] [--mood 1-5] [--tag a,b] [--link TASK-000001] [--add-file PATH]
+  khata add "HEADING" "DESCRIPTION" [--body-file FILE] [same options as log]
+  khata list [--limit N]        latest entries
+  khata status                  database check and a short summary
+  khata validate               check data.json, registry.json and attachments
+
+${BOLD}Learning${RST}
+  khata learn list              all learning subjects
+  khata learn open SLUG [--browser]   print (or open) the subject page URL
+  khata learn build             regenerate learn/ pages from learn/subjects.json
+
+${BOLD}Site${RST}
+  khata time                    current time in Dhaka and UTC
+  khata url https://ADDRESS     set the public address used in share previews
+  khata doctor                  check that the project files are in place
+
+${BOLD}Environment${RST}
+  khata setup [--no-node] [--no-dotnet]   install git, Python, Node.js, .NET (Ubuntu)
+  khata shell                   bash shell inside the project folder
+
+${BOLD}Housekeeping${RST}
+  khata backup                  create a timestamped archive in backups/
+  khata version
+  khata help
+
+Categories: health learning work habits relationships faith finance reflection other
+Categories and tags also work with 'add'. Run from anywhere: the shell moves to the project folder.
+USAGE
+}
+
+cmd_start() {
+  need_py
+  exec bash "$HERE/run.sh" "${1:-$PORT}"
+}
+
+cmd_status() {
+  need_py
+  head_ "Database"
+  if "$PY" life.py validate; then :; else warn "validation reported problems (see above)"; fi
+  head_ "Summary"
+  "$PY" - <<'PY'
+import json, datetime as dt
+DH = dt.timezone(dt.timedelta(hours=6))
+entries = json.load(open("data.json", encoding="utf-8")).get("entries", [])
+now = dt.datetime.now(dt.timezone.utc)
+today = dt.datetime.now(DH).strftime("%Y-%m-%d")
+def utc(e):
+    return dt.datetime.strptime(e["utc_time"], "%Y-%m-%d %H:%M:%S.%f").replace(tzinfo=dt.timezone.utc)
+week = sum(1 for e in entries if now - utc(e) < dt.timedelta(days=7))
+today_n = sum(1 for e in entries if e["dhaka_time"][:10] == today)
+moods = [e["mood"] for e in entries if e.get("mood") is not None]
+avg = f"{sum(moods) / len(moods):.1f}" if moods else "-"
+latest = max(entries, key=utc) if entries else None
+print(f"  entries        {len(entries)}")
+print(f"  today (Dhaka)  {today_n}")
+print(f"  last 7 days    {week}")
+print(f"  average mood   {avg}")
+print(f"  latest         {latest['tracking_id'] + '  ' + latest['heading'] if latest else '-'}")
+PY
+  say "  subjects       $("$PY" -c 'import json;print(len(json.load(open("learn/subjects.json",encoding="utf-8"))["subjects"]))' 2>/dev/null || echo '-')"
+}
+
+cmd_time() {
+  printf 'Dhaka  %s\n' "$(TZ=Asia/Dhaka date '+%A, %d %B %Y · %H:%M:%S (UTC+06:00)')"
+  printf 'UTC    %s\n' "$(date -u '+%Y-%m-%d %H:%M:%S')"
+}
+
+cmd_learn() {
+  need_py
+  local sub="${1:-list}"
+  [[ $# -gt 0 ]] && shift
+  case "$sub" in
+    list)  "$PY" learn/build.py list ;;
+    build) "$PY" learn/build.py ;;
+    open)
+      local slug="${1:-}"
+      [[ -n "$slug" ]] || die "usage: khata learn open SLUG"
+      [[ -f "learn/$slug/index.html" ]] || die "unknown subject '$slug'. See: khata learn list"
+      local url="http://127.0.0.1:$PORT/learn/$slug/"
+      say "$url"
+      if [[ "${1:-}" == "--browser" ]]; then open_url "$url"; fi
+      ;;
+    *) die "unknown learn command '$sub'. Try: khata learn list" ;;
+  esac
+}
+
+cmd_url() {
+  need_py
+  local new="${1:-}"
+  [[ "$new" =~ ^https?:// ]] || die "usage: khata url https://your-address/nijer-khata"
+  new="${new%/}"
+  "$PY" - "$new" <<'PY'
+import glob, json, sys
+new = sys.argv[1]
+cfg = json.load(open("site.json", encoding="utf-8"))
+old = cfg.get("site_url", "").rstrip("/")
+files = ["index.html", "terminal/index.html", "learn/index.html"] + glob.glob("learn/*/index.html")
+changed = 0
+if old and old != new:
+    for f in files:
+        try:
+            with open(f, encoding="utf-8") as fh:
+                s = fh.read()
+        except FileNotFoundError:
+            continue
+        if old in s:
+            with open(f, "w", encoding="utf-8") as fh:
+                fh.write(s.replace(old, new))
+            changed += 1
+cfg["site_url"] = new
+with open("site.json", "w", encoding="utf-8") as fh:
+    json.dump(cfg, fh, indent=4, ensure_ascii=False)
+print(f"site_url -> {new}  ({changed} file(s) updated)")
+PY
+  "$PY" learn/build.py >/dev/null && ok "learn pages rebuilt"
+}
+
+cmd_setup() {
+  [[ "$(uname -s)" == "Linux" ]] || die "setup runs on Linux/Ubuntu. On Windows install WSL first: wsl --install -d Ubuntu"
+  [[ -f "$HERE/setup/setup-ubuntu.sh" ]] || die "missing setup/setup-ubuntu.sh"
+  exec bash "$HERE/setup/setup-ubuntu.sh" "$@"
+}
+
+cmd_shell() {
+  cd "$HERE"
+  say "khata shell in $HERE  (type exit to come back)"
+  exec "${SHELL:-/bin/bash}" -l
+}
+
+cmd_doctor() {
+  head_ "Project files"
+  local missing=0 f
+  for f in life.py run.sh index.html data.json registry.json site.json \
+           terminal/index.html learn/build.py learn/subjects.json learn/learn.css learn/learn.js \
+           assets/logo.png assets/branding/og/og-1200x630.png assets/branding/logos/web/mj-logo-soft.png; do
+    if [[ -e "$f" ]]; then ok "$f"; else warn "missing: $f"; missing=$((missing+1)); fi
+  done
+  head_ "Tools"
+  if command -v "$PY" >/dev/null 2>&1; then ok "$("$PY" --version 2>&1)"; else warn "python not found ($PY)"; fi
+  for t in git node npm dotnet pip3; do
+    if command -v "$t" >/dev/null 2>&1; then ok "$t: $("$t" --version 2>&1 | head -n1)"; else warn "$t not installed (run: khata setup)"; fi
+  done
+  [[ $missing -eq 0 ]] && ok "all project files present" || warn "$missing file(s) missing"
+}
+
+cmd_backup() {
+  mkdir -p backups
+  local out="backups/nijer-khata-$(TZ=Asia/Dhaka date +%Y%m%d-%H%M%S).tar.gz"
+  tar --exclude=./backups --exclude='*.tmp' -czf "$out" .
+  ok "backup written: $out"
+}
+
+main() {
+  local cmd="${1:-help}"
+  [[ $# -gt 0 ]] && shift
+  case "$cmd" in
+    help|-h|--help)      usage ;;
+    version|-V|--version) say "khata $VERSION" ;;
+    start|serve)         cmd_start "$@" ;;
+    open)                open_url "http://127.0.0.1:$PORT/" ;;
+    status)              cmd_status ;;
+    time|now|date)       cmd_time ;;
+    log|add|list|validate)
+      need_py
+      "$PY" life.py "$cmd" "$@" ;;
+    ls)                  need_py; "$PY" life.py list "$@" ;;
+    learn)               cmd_learn "$@" ;;
+    url)                 cmd_url "$@" ;;
+    doctor)              cmd_doctor ;;
+    setup)               cmd_setup "$@" ;;
+    shell)               cmd_shell ;;
+    backup)              cmd_backup ;;
+    *)                   die "unknown command '$cmd'. Run: khata help" ;;
+  esac
+}
+
+main "$@"

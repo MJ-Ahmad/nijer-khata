@@ -1,0 +1,122 @@
+{
+    "groups": {
+        "space":     { "en": "Space & Cosmos",     "bn": "মহাকাশ ও মহাবিশ্ব",   "ar": "الفضاء والكون" },
+        "earth":     { "en": "Earth & Geo",        "bn": "পৃথিবী ও ভূ-তথ্য",     "ar": "الأرض والجغرافيا" },
+        "math":      { "en": "Mathematics",        "bn": "গণিত",                  "ar": "الرياضيات" },
+        "media":     { "en": "Media",              "bn": "মিডিয়া",               "ar": "الوسائط" },
+        "computing": { "en": "Computing & Systems", "bn": "কম্পিউটিং ও সিস্টেম", "ar": "الحوسبة والأنظمة" },
+        "ai":        { "en": "AI & Data",          "bn": "এআই ও ডেটা",            "ar": "الذكاء الاصطناعي والبيانات" }
+    },
+    "subjects": [
+        {
+            "slug": "universe", "group": "space", "status": "planned",
+            "name": { "en": "Universe", "bn": "মহাবিশ্ব", "ar": "الكون" },
+            "summary": { "en": "From planets and stars to galaxies and the large-scale structure of the cosmos.", "bn": "গ্রহ, নক্ষত্র থেকে ছায়াপথ ও মহাবিশ্বের বৃহৎ কাঠামো পর্যন্ত।" },
+            "phases": [
+                { "title": { "en": "Foundations", "bn": "মৌলিক ধারণা" }, "items": ["Scale and units in astronomy", "Celestial coordinates and time", "Telescopes and observation"] },
+                { "title": { "en": "Stars and galaxies", "bn": "নক্ষত্র ও ছায়াপথ" }, "items": ["Stellar life cycles", "The Milky Way", "Galaxy classification"] },
+                { "title": { "en": "Cosmology", "bn": "মহাজাগতিক বিজ্ঞান" }, "items": ["Expansion and the Big Bang", "Dark matter and dark energy", "The cosmic microwave background"] }
+            ]
+        },
+        {
+            "slug": "cosmic", "group": "space", "status": "planned",
+            "name": { "en": "Cosmic", "bn": "মহাজাগতিক", "ar": "الكوني" },
+            "summary": { "en": "Cosmology in depth: how the universe began, how it expands and what it is made of.", "bn": "মহাজগতের উৎপত্তি, প্রসারণ ও উপাদান নিয়ে গভীর পাঠ।" },
+            "phases": [
+                { "title": { "en": "Background", "bn": "পটভূমি" }, "items": ["General relativity essentials", "Friedmann equations", "Redshift and distance measures"] },
+                { "title": { "en": "Early universe", "bn": "আদি মহাবিশ্ব" }, "items": ["Big Bang nucleosynthesis", "Inflation", "Recombination"] },
+                { "title": { "en": "Structure formation", "bn": "কাঠামো গঠন" }, "items": ["Growth of structure", "Large-scale surveys", "Gravitational waves"] }
+            ]
+        },
+        {
+            "slug": "gis", "group": "earth", "status": "planned",
+            "name": { "en": "GIS", "bn": "জিআইএস", "ar": "نظم المعلومات الجغرافية" },
+            "summary": { "en": "Geographic Information Systems: capturing, storing, analysing and presenting spatial data.", "bn": "ভৌগোলিক তথ্য সংগ্রহ, সংরক্ষণ, বিশ্লেষণ ও উপস্থাপনের পদ্ধতি।" },
+            "phases": [
+                { "title": { "en": "Foundations", "bn": "মৌলিক ধারণা" }, "items": ["Coordinate reference systems", "Vector and raster data", "Projections and datums"] },
+                { "title": { "en": "Analysis", "bn": "বিশ্লেষণ" }, "items": ["Overlay and buffering", "Spatial joins", "Interpolation"] },
+                { "title": { "en": "Tools and publishing", "bn": "টুল ও প্রকাশ" }, "items": ["QGIS basics", "Web maps", "Accuracy and metadata"] }
+            ]
+        },
+        {
+            "slug": "geojson", "group": "earth", "status": "planned",
+            "name": { "en": "GeoJSON", "bn": "জিওজসন", "ar": "GeoJSON" },
+            "summary": { "en": "The open standard for encoding geographic features in JSON: structure, validation and web mapping.", "bn": "JSON-এ ভৌগোলিক তথ্য লেখার ওপেন স্ট্যান্ডার্ড।" },
+            "phases": [
+                { "title": { "en": "Structure", "bn": "কাঠামো" }, "items": ["Feature and FeatureCollection", "Geometry types", "Coordinate order (longitude, latitude)"] },
+                { "title": { "en": "Working with it", "bn": "ব্যবহার" }, "items": ["Validation against the spec", "Parsing in JavaScript and Python", "Simplification and file size"] },
+                { "title": { "en": "Mapping", "bn": "মানচিত্র" }, "items": ["Leaflet and MapLibre", "Styling by properties", "Serving large datasets"] }
+            ]
+        },
+        {
+            "slug": "geography", "group": "earth", "status": "planned",
+            "name": { "en": "Geography", "bn": "ভূগোল", "ar": "الجغرافيا" },
+            "summary": { "en": "Physical and human geography: landforms, climate, population and how places connect.", "bn": "ভৌত ও মানব ভূগোল: ভূমিরূপ, জলবায়ু, জনসংখ্যা ও স্থানগুলোর সংযোগ।" },
+            "phases": [
+                { "title": { "en": "Physical geography", "bn": "ভৌত ভূগোল" }, "items": ["Plate tectonics", "Rivers and deltas of Bangladesh", "Climate zones"] },
+                { "title": { "en": "Human geography", "bn": "মানব ভূগোল" }, "items": ["Population and settlement", "Urbanisation", "Resources and economy"] },
+                { "title": { "en": "Regional focus", "bn": "আঞ্চলিক পাঠ" }, "items": ["Geography of Bangladesh", "South Asia", "Map reading"] }
+            ]
+        },
+        {
+            "slug": "math", "group": "math", "status": "planned",
+            "name": { "en": "Mathematics", "bn": "গণিত", "ar": "الرياضيات" },
+            "summary": { "en": "Core mathematics from algebra and calculus to linear algebra, probability and proof.", "bn": "বীজগণিত, ক্যালকুলাস, রৈখিক বীজগণিত, সম্ভাবনা ও প্রমাণ।" },
+            "phases": [
+                { "title": { "en": "Core", "bn": "মূল ধারা" }, "items": ["Algebra and functions", "Limits and derivatives", "Integration"] },
+                { "title": { "en": "Linear algebra", "bn": "রৈখিক বীজগণিত" }, "items": ["Vectors and matrices", "Eigenvalues and eigenvectors", "Applications"] },
+                { "title": { "en": "Probability", "bn": "সম্ভাবনা" }, "items": ["Distributions", "Statistical inference", "Bayesian reasoning"] }
+            ]
+        },
+        {
+            "slug": "ffmpeg", "group": "media", "status": "planned",
+            "name": { "en": "FFmpeg", "bn": "এফএফএমপেগ", "ar": "FFmpeg" },
+            "summary": { "en": "Command-line audio and video processing: transcoding, filters, streaming and automation.", "bn": "কমান্ড-লাইনে অডিও-ভিডিও প্রসেসিং: ট্রান্সকোড, ফিল্টার, স্ট্রিমিং ও অটোমেশন।" },
+            "phases": [
+                { "title": { "en": "Basics", "bn": "মৌলিক" }, "items": ["Containers and codecs", "Transcoding and remuxing", "Stream selection"] },
+                { "title": { "en": "Filters", "bn": "ফিল্টার" }, "items": ["Scale, crop and overlay", "Audio filters", "Filter graphs"] },
+                { "title": { "en": "Automation", "bn": "অটোমেশন" }, "items": ["Batch scripts", "Segmenting for HLS", "Quality metrics"] }
+            ]
+        },
+        {
+            "slug": "mycommand", "group": "computing", "status": "planned",
+            "name": { "en": "MyCommand", "bn": "মাইকমান্ড", "ar": "MyCommand" },
+            "summary": { "en": "Your personal command-line toolkit: shell scripting, automation and reusable tools.", "bn": "আপনার নিজের কমান্ড-লাইন টুলকিট: শেল স্ক্রিপ্টিং ও অটোমেশন।" },
+            "phases": [
+                { "title": { "en": "Shell", "bn": "শেল" }, "items": ["Navigation and files", "Pipes and redirection", "Variables and exit codes"] },
+                { "title": { "en": "Scripting", "bn": "স্ক্রিপ্টিং" }, "items": ["Functions and arguments", "Error handling", "Parsing options"] },
+                { "title": { "en": "Tools", "bn": "টুল" }, "items": ["Building your own commands", "Packaging and install", "Testing scripts"] }
+            ]
+        },
+        {
+            "slug": "systems", "group": "computing", "status": "planned",
+            "name": { "en": "Systems", "bn": "সিস্টেমস", "ar": "الأنظمة" },
+            "summary": { "en": "Systems thinking and design: processes, data flow, reliability and architecture.", "bn": "সিস্টেম চিন্তা ও ডিজাইন: প্রক্রিয়া, ডেটা প্রবাহ, নির্ভরযোগ্যতা ও স্থাপত্য।" },
+            "phases": [
+                { "title": { "en": "Thinking", "bn": "চিন্তা" }, "items": ["Feedback loops", "Boundaries and inputs", "Mental models"] },
+                { "title": { "en": "Design", "bn": "ডিজাইন" }, "items": ["Data flow and state", "Storage and consistency", "Failure and recovery"] },
+                { "title": { "en": "Operation", "bn": "পরিচালনা" }, "items": ["Logging and observability", "Versioning", "Documentation"] }
+            ]
+        },
+        {
+            "slug": "mlnet", "group": "ai", "status": "planned",
+            "name": { "en": "ML.NET", "bn": "এমএল.নেট", "ar": "ML.NET" },
+            "summary": { "en": "Machine learning in .NET: data loading, training pipelines, evaluation and deployment.", "bn": ".NET-এ মেশিন লার্নিং: ডেটা লোড, ট্রেনিং পাইপলাইন, মূল্যায়ন ও ডিপ্লয়মেন্ট।" },
+            "phases": [
+                { "title": { "en": "Setup", "bn": "সেটআপ" }, "items": ["Installing ML.NET", "IDataView and loading data", "Feature engineering"] },
+                { "title": { "en": "Training", "bn": "ট্রেনিং" }, "items": ["Choosing a trainer", "AutoML", "Evaluation metrics"] },
+                { "title": { "en": "Use", "bn": "ব্যবহার" }, "items": ["Saving and loading models", "Prediction engine", "Serving inside ASP.NET"] }
+            ]
+        },
+        {
+            "slug": "mypython", "group": "computing", "status": "planned",
+            "name": { "en": "MyPython", "bn": "মাইপাইথন", "ar": "MyPython" },
+            "summary": { "en": "Python from the ground up to practical projects: data structures, files, APIs and small tools.", "bn": "শূন্য থেকে ব্যবহারিক প্রজেক্ট: ডেটা স্ট্রাকচার, ফাইল, API ও ছোট টুল।" },
+            "phases": [
+                { "title": { "en": "Language", "bn": "ভাষা" }, "items": ["Types and control flow", "Functions and modules", "Errors and exceptions"] },
+                { "title": { "en": "Data", "bn": "ডেটা" }, "items": ["Files and JSON", "Lists, dicts and comprehensions", "Working with CSV"] },
+                { "title": { "en": "Libraries", "bn": "লাইব্রেরি" }, "items": ["Virtual environments", "Calling APIs", "Testing with pytest"] }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7E7A1"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="#0B0B0B"/>
+
+  <!-- MJ Monogram -->
+  <path
+    d="M96 384V128h32l96 128 96-128h32v160h-32V176l-96 120-96-120v208z"
+    fill="url(#gold)"
+  />
+
+  <path
+    d="M352 128h64v176c0 44-24 76-64 92l-32 12v-36l16-7c30-12 48-34 48-65V128z"
+    fill="url(#gold)"
+  />
+
+  <!-- Signature mark -->
+  <circle
+    cx="404"
+    cy="120"
+    r="28"
+    fill="none"
+    stroke="url(#gold)"
+    stroke-width="8"
+  />
+
+  <circle
+    cx="404"
+    cy="120"
+    r="8"
+    fill="url(#gold)"
+  />
+</svg>

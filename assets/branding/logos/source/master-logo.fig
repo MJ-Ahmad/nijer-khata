@@ -1,0 +1,12 @@
+{
+  "document": {
+    "name": "MJ Ahmad Master Logo",
+    "type": "FIGMA_MOCK",
+    "description": "Editable master logo specification for MJ Ahmad",
+    "elements": [
+      {"type":"text","value":"MJ","style":"monogram"},
+      {"type":"text","value":"AHMAD","style":"subtitle"},
+      {"type":"color","primary":"#111111","accent":"#D4AF37"}
+    ]
+  }
+}

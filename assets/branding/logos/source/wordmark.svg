@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7E7A1"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="400" fill="#0B0B0B"/>
+
+  <text
+    x="120"
+    y="260"
+    font-family="Georgia, Trajan Pro, serif"
+    font-size="170"
+    font-weight="700"
+    letter-spacing="12"
+    fill="url(#gold)">
+    MJ AHMAD
+  </text>
+
+  <line
+    x1="120"
+    y1="310"
+    x2="620"
+    y2="310"
+    stroke="url(#gold)"
+    stroke-width="4"/>
+
+  <line
+    x1="980"
+    y1="310"
+    x2="1480"
+    y2="310"
+    stroke="url(#gold)"
+    stroke-width="4"/>
+</svg>

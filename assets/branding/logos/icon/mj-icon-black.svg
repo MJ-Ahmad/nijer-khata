@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <title>mj-icon-black</title>
+  <rect width="200" height="100" fill="white"/>
+  <path d="M40 70V30h10l10 25 10-25h10v40h-8V45l-8 20h-8l-8-20v25h-8z" fill="black"/>
+  <path d="M100 30h10v40h-10V30z" fill="black"/>
+  <path d="M110 70c10 0 20-5 20-20s-10-20-20-20v8c7 0 12 4 12 12s-5 12-12 12v8z" fill="black"/>
+  <path d="M70 50h40v4H70z" fill="black"/>
+</svg>
